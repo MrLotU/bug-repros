@@ -4,7 +4,11 @@ import Vapor
 final class TodoController {
     /// Returns a list of all `Todo`s.
     func index(_ req: Request) throws -> Future<[Todo]> {
-        return Todo.query(on: req).all()
+        
+        let double = 12.0
+        return Todo.query(on: req)
+            .filter(\.title.doubleValue, .greaterThan, double)
+            .all()
     }
 
     /// Saves a decoded `Todo` to the database.
@@ -19,5 +23,11 @@ final class TodoController {
         return try req.parameters.next(Todo.self).flatMap { todo in
             return todo.delete(on: req)
         }.transform(to: .ok)
+    }
+}
+
+extension String {
+    var doubleValue: Double? {
+        return Double(self)
     }
 }
