@@ -26,5 +26,5 @@ public final class Wrapper {
 struct WrappedInside {
     
     @Wrapper("some_name")
-    var value = "ABC"
+    var value = "ABC" /// Removing `= "ABC"` here will not result in an Abort trap: 6
 }
