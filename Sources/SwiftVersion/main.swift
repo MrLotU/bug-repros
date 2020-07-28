@@ -1,5 +1,5 @@
-#if swift(>=5.1)
-print("Swift >=5.1")
+#if swift(>=5.0)
+print("Swift >=5.0")
 #else
-print("Swift <5.1")
+print("Swift <5.0")
 #endif
